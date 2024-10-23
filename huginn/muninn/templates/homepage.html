@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<html>
+  <head>
+    <title>Munnin</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">  </head>
+  <body>
+    <div class="banner">
+      <div class="navbar">
+        <img src="https://raw.githubusercontent.com/Stupid-Creations/Munnin/refs/heads/main/raven.png" class="logo" />
+        <ul>
+          <li><a href="/revision">Upload</a></li>
+          <li><a href="/flashcard">Revision</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="/accounts/logout">Log Out</a></li>
+          <p>Hello {{username}}!</p>
+
+          {% else %}
+          <li><a href="/accounts/login">Login</a></li>
+          <li><a href="/signup">Sign Up</a></li>
+
+          {% endif %}
+        </ul>
+      </div>
+      <div class="content">
+        <h1>About Us</h1>
+        <p>Education cannot be a matter of charity, Education has to be a matter of right.<br> Muninn, named after Odin's crow, is a web app based around generating study <br>material for all. Muninn uses AI to provide a personalized learning experience<br> through constructive feedback through evaluations, and procedurally generated flashcards</p>
+              </div>
+
+  </body>
+
+</html>
+
+{%  endblock %}

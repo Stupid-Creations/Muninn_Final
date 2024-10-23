@@ -1,0 +1,64 @@
+{% load static %}
+<html>
+<head>
+    <title>Flashcards</title>
+    <link rel="stylesheet" href="{% static 'css/flashcard.css' %}">
+    <script>
+        let currentIndex = 0; 
+        let flashcards = []; 
+
+        function showFlashcard(index) {
+            flashcards.forEach((flashcard, i) => {
+                flashcard.style.display = (i === index) ? "block" : "none";
+            });
+            currentIndex = index; 
+        }
+
+        function nextFlashcard() {
+            if (currentIndex < flashcards.length - 1) {
+                showFlashcard(currentIndex + 1); 
+            } else {
+                showFlashcard(0); 
+            }
+        }
+
+        
+        function prevFlashcard() {
+            if (currentIndex > 0) {
+                showFlashcard(currentIndex - 1); 
+            } else {
+                showFlashcard(flashcards.length - 1); 
+            }
+        }
+
+        window.onload = function() {
+            flashcards = Array.from(document.getElementsByClassName('flip-card')); 
+            showFlashcard(0); 
+        };
+    </script>
+</head>
+<body>
+    <div class="flashcards-container">
+        {% for question, answer in flashcards %}
+        <div class="flip-card" style="display: none;"> 
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h1>Question:</h1>
+                    <p>{{ answer }}</p> 
+                </div>
+                <div class="flip-card-back">
+                    <h1>Answer:</h1>
+                    <p>{{ question }}</p> 
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="button-container">
+        <button onclick="prevFlashcard()">Previous</button>
+        <button onclick="nextFlashcard()">Next</button>
+        <p><li><a href=/quiz/{{chapter.identity}}>Quiz Yourself!</a></li></p>
+    </div>
+</body>
+</html>

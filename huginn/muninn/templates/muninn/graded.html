@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Log In{% endblock %}
+{% block content %}
+{% load static %}
+{% load indexer %}
+
+<head>
+  <title>Grades!</title>
+  <link rel="stylesheet" href="{% static 'css/graded.css' %}">  </head>
+</head>
+
+<body>
+  <nav>
+  <h2>Quiz Grades:</h2>
+  {% csrf_token %}
+  {% for grade in grades %}  
+  <p>Your Answer:{{ans|index:forloop.counter0}}</p>      
+  <p>Your grades: {{grade}}</p>
+  <p>Remarks:{{remarks|index:forloop.counter0}}</p>
+  <br>
+  {% endfor %}
+  <div class="but"><a href="/flashcard">Submit</a></div>
+</nav>
+<hr>
+</body>
+
+    
+{% endblock %}

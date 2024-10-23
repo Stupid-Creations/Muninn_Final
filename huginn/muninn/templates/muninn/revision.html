@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload PDF</title>
+    <link rel="stylesheet" href="{% static 'css/rev.css' %}">
+</head>
+<body>
+    <h1>Upload a PDF</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        
+        <div class="pdf">
+            {{ form.pdf.errors }}
+            <label for="pdf">PDF:</label>
+            {{ form.pdf }}
+        </div>
+        
+        <div class="grade">
+            {{ form.grade.errors }}
+            <label for="grade">Grade:</label>
+            {{ form.grade }}
+        </div>
+        
+        <div class="chapter">
+            {{ form.chapter.errors }}
+            <label for="chapter">Chapter:</label>
+            {{ form.chapter }}
+        </div>
+        
+        <div class="subject">
+            {{ form.subject.errors }}
+            <label for="subject">Subject:</label>
+            {{ form.subject }}
+        </div>
+        
+        <p><button type="submit">Upload PDF</button></p>
+    </form>
+
+    {% if form.errors %}
+        <div style="color: red;">
+            <p>{{ form.errors }}</p>
+        </div>
+    {% endif %}
+</body>
+</html>
+

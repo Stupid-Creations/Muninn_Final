@@ -1,0 +1,12 @@
+{extends "base.html"}
+
+{% block title %} Account Details {% end block %}
+{% block content %}
+{% load static %}
+
+<h1> Your Cards</h1>
+{% for card in cards %}
+<p>{{card.grade}}</p>
+{% endfor %}
+
+{% endblock %}

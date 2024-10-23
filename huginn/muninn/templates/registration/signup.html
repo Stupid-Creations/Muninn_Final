@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<head><title>Log In</title>
+  <link rel="stylesheet" href="{% static 'css/signup.css' %}">  </head>
+</head>
+<h2>Sign Up</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <div class="username">
+        {{ form.username.errors }}
+        <label for="username">Username:</label>
+        {{ form.username }}
+    </div>
+
+    <div class="psw1">
+        {{ form.password1.errors }}
+        <label for="password1">Password:</label>
+        {{ form.password1 }}
+    </div>
+
+    <div class="psw2">
+        {{ form.password2.errors }}
+        <label for="password2">Confirm Password:</label>
+        {{ form.password2 }}
+    </div>
+
+    <button type="submit">Sign Up</button>
+</form>
+{% endblock %}

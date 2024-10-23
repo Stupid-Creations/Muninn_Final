@@ -1,0 +1,26 @@
+{% load static %}
+
+<head>
+    <title>Flashcards</title>
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+</head>
+
+<body>
+    <nav>Library</nav>
+        {% for chapter in chapters %}
+        <div class="master">
+        <div class="Subdivs"id="{{ chapter.id }}">
+            <h3>Chapter: {{ chapter.chapter }} </h3>
+            <h3>Grade: {{ chapter.grade }} </h3>
+            <h3>Subject: {{ chapter.subject }} </h3>
+        </div>
+<div class="summary">
+    <p>{{chapter.sut}}</p>
+    <p><li><a href=/flashcard/{{chapter.identity}}>Open Flashcard set</a></li></p>
+    <p><li><a href=/quiz/{{chapter.identity}}>Quiz Yourself!</a></li></p>
+
+</div>
+<hr>
+</div>
+        {% endfor %}
+</body>
