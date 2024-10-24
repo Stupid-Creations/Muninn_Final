@@ -29,4 +29,4 @@
  ## Account System
  ![Signup](https://cloud-e51w267md-hack-club-bot.vercel.app/0signup.png)
  
- Login system added at the request of the hackathon judges, for uploading educational texts
+Login System added for the funsies and for future user specific features like streaks and test score graphs (currently used as verification for uploading files)
